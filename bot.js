@@ -32,51 +32,42 @@ var bot = new Discord.Client({
    token: auth.token,
    autorun: true
 });
-bot.on('ready', function (evt) {
+bot.on('ready', function (evt){
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', function (user, userID, channelID, message, evt){
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
         var args = message.substring(1).split(' ');
         var cmd = args[0];
-       
+        var msg;
         args = args.splice(1);
         switch(cmd) {
+            
             // !help
             case 'help':
-                bot.sendMessage({
-                    to: channelID,
-                    message: printCmds(commands)
-                });
+                sendMessage(channelID, printCmds(commands));
             break;
 
             // !jeff
             case 'jeff':
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'My name\'s Jeff!'
-                });
+                msg = 'My name\s Jeff!';
+                sendMessage(channelID, msg);
             break;
             
             // !stats
             case 'rlstats':
-                if (args.size() <= 1) {
-                    bot.sendMessage({
-                        to: channelID,
-                        message: INVALID_ARGS_MSG 
-                    });
+                if (!validateArgs('rlstats', args)){
+                    msg = INVALID_ARGS_MSG;
                 }
-                else if (args.size() == 2) {
+                else {
                     var accountId = args[1];
-                    bot.sendMessage({
-                    to: channelID,
-                    message: RL_TRACKER_URL + accountId
-                    });
+                    msg = RL_TRACKER_URL + accountId;
                 }
+                sendMessage(channelID, msg);
             break;
             
             // Just add any case commands if you want to..
@@ -86,7 +77,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 function printCmds(cmds){
     var msg = "";
-    cmds.forEach(function(element) {
+    cmds.forEach(function(element){
         var keys = Object.keys(element);
         for(var i = 0; i < keys.length(); i++){
             msg += keys[i] + ": " + cmd[keys[i]] + "\n";
@@ -95,4 +86,21 @@ function printCmds(cmds){
     });
 
     return msg;
+}
+
+function validateArgs(cmdName, args){
+    //get correct object and verify number of args
+    var result = commands.filter(cmds){
+        return cmds.name == cmdName;
+    }
+    var result = result[0];
+
+    return args.size == result['usage'].split(' ').size();
+}
+
+function sendMsg(channelID, msg){
+    bot.sendMessage({
+                    to: channelID,
+                    message: msg
+                    });
 }

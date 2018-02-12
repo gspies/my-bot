@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const bot = new Discord.Client();
 var logger = require('winston');
 var auth = require('./auth.json');
 
@@ -14,7 +14,6 @@ client.on('message', message => {
   }
 });
 */
-client.login('NDExNTQ1NzExMjA1OTQxMjU5.DV9SAQ.bGfXhcJSQOzNFYQSoGfjh');
 
 console.log("hello");
 
@@ -46,10 +45,10 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 // Initialize Discord Bot
-var bot = new Discord.Client({
+/*var bot = new Discord.Client({
    token: auth.token,
    autorun: true
-});
+});*/
 
 //client secret: F5K-yAzV2C_gjbor-EOi0xFCYaT_PoVa
 
@@ -104,7 +103,8 @@ bot.on("presence", function(user, userID, status, game, event) {
 bot.on("any", function(event) {
     /*console.log(rawEvent)*/ //Logs every event
 });
-//bot.login("NDExNTQ1NzExMjA1OTQxMjU5.DV9SAQ.bGfXhcJSQOzNFYQSoGfjh")
+
+bot.login('NDExNTQ1NzExMjA1OTQxMjU5.DV9SAQ.bGfXhcJSQOzNFYQSoGfjh');
 
 function printCmds(cmds){
     var msg = "";
@@ -131,7 +131,7 @@ function validateArgs(cmdName, args){
 
 function sendMsg(channelID, msg){
     bot.sendMessage({
-                    to: channelID,
-                    message: msg
-                    });
+        to: channelID,
+        message: msg
+    });
 }

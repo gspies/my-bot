@@ -1,4 +1,21 @@
-var Discord = require('discord.io');
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+client.on('ready', () => {
+  console.log('I am ready!');
+});
+
+client.on('message', message => {
+  if (message.content === 'ping') {
+    message.reply('pong');
+  }
+});
+
+client.login('NDExNTQ1NzExMjA1OTQxMjU5.DV9SAQ.bGfXhcJSQOzNFYQSoGfjh');
+
+
+
+/*var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 
@@ -32,10 +49,17 @@ var bot = new Discord.Client({
    token: auth.token,
    autorun: true
 });
+
+
+
+//client secret: F5K-yAzV2C_gjbor-EOi0xFCYaT_PoVa
+
+
 bot.on('ready', function (evt){
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
+    console.log("hi");
 });
 bot.on('message', function (user, userID, channelID, message, evt){
     // Our bot needs to know if it will execute a command
@@ -74,10 +98,19 @@ bot.on('message', function (user, userID, channelID, message, evt){
          }     
     }
 });
+*/
+/*bot.on("presence", function(user, userID, status, game, event) {
+    console.log(user + " is now: " + status);
+});
+*/
+//bot.on("any", function(event) {
+    /*console.log(rawEvent)*/ //Logs every event
+//});
+//bot.login("NDExNTQ1NzExMjA1OTQxMjU5.DV9SAQ.bGfXhcJSQOzNFYQSoGfjh")
 
 function printCmds(cmds){
     var msg = "";
-    cmds.forEach(function(element){
+    cmds.forEach(cmd, function(element){
         var keys = Object.keys(element);
         for(var i = 0; i < keys.length(); i++){
             msg += keys[i] + ": " + cmd[keys[i]] + "\n";
@@ -90,9 +123,9 @@ function printCmds(cmds){
 
 function validateArgs(cmdName, args){
     //get correct object and verify number of args
-    var result = commands.filter(cmds){
+    var result = commands.filter(function(cmds){
         return cmds.name == cmdName;
-    }
+    })
     var result = result[0];
 
     return args.size == result['usage'].split(' ').size();

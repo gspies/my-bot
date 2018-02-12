@@ -1,11 +1,70 @@
 {
-  "name": "greeter-bot",
+  "name": "Jeff-bot",
   "version": "1.0.0",
-  "description": "My own Discord bot",
-  "main": "bot.js",
-  "author": "Greg Spies",
+  "lockfileVersion": 1,
+  "requires": true,
   "dependencies": {
+    "async": {
+      "integrity": "sha1-+PwEyjoTeErenhZBr5hXjPvWR6k=",
+      "resolved": "https://registry.npmjs.org/async/-/async-1.0.0.tgz",
+      "version": "1.0.0"
+    },
+    "cjopus": {
+      "integrity": "sha1-RvPPyWuD99eERt6LTP2ZS1iJqaA=",
+      "resolved": "https://registry.npmjs.org/cjopus/-/cjopus-0.0.4.tgz",
+      "version": "0.0.4"
+    },
+    "colors": {
+      "integrity": "sha1-BDP0TYCWgP3rYO0mDxsMJi6CpAs=",
+      "resolved": "https://registry.npmjs.org/colors/-/colors-1.0.3.tgz",
+      "version": "1.0.3"
+    },
+    "cycle": {
+      "integrity": "sha1-IegLK+hYD5i0aPN5QwZisEbDStI=",
+      "resolved": "https://registry.npmjs.org/cycle/-/cycle-1.0.3.tgz",
+      "version": "1.0.3"
+    },
     "discord.io": "^2.5.3",
-    "winston": "^2.4.0"
+    "discord.js": "^11.3.0",
+    "eyes": {
+      "integrity": "sha1-Ys8SAjTGg3hdkCNIqADvPgzCC8A=",
+      "resolved": "https://registry.npmjs.org/eyes/-/eyes-0.1.8.tgz",
+      "version": "0.1.8"
+    },
+    "isstream": {
+      "integrity": "sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=",
+      "resolved": "https://registry.npmjs.org/isstream/-/isstream-0.1.2.tgz",
+      "version": "0.1.2"
+    },
+    "options": {
+      "integrity": "sha1-7CLTEoBrtT5zF3Pnza788cZDEo8=",
+      "resolved": "https://registry.npmjs.org/options/-/options-0.0.6.tgz",
+      "version": "0.0.6"
+    },
+    "stack-trace": {
+      "integrity": "sha1-VHxws0fo0ytOEI6hoqFZ5f3eGcA=",
+      "resolved": "https://registry.npmjs.org/stack-trace/-/stack-trace-0.0.10.tgz",
+      "version": "0.0.10"
+    },
+    "tweetnacl": {
+      "integrity": "sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=",
+      "resolved": "https://registry.npmjs.org/tweetnacl/-/tweetnacl-0.14.5.tgz",
+      "version": "0.14.5"
+    },
+    "ultron": {
+      "integrity": "sha1-rOEWq1V80Zc4ak6I9GhTeMiy5Po=",
+      "resolved": "https://registry.npmjs.org/ultron/-/ultron-1.0.2.tgz",
+      "version": "1.0.2"
+    },
+    "winston": "^2.4.0",
+    "ws": {
+      "integrity": "sha512-o3KqipXNUdS7wpQzBHSe180lBGO60SoK0yVo3CYJgb2MkobuWuBX6dhkYP5ORCLd55y+SaflMOV5fqAB53ux4w==",
+      "requires": {
+        "options": "0.0.6",
+        "ultron": "1.0.2"
+      },
+      "resolved": "https://registry.npmjs.org/ws/-/ws-1.1.5.tgz",
+      "version": "1.1.5"
+    }
   }
 }

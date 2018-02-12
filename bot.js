@@ -1,7 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+var logger = require('winston');
+var auth = require('./auth.json');
 
-client.on('ready', () => {
+/*client.on('ready', () => {
+ 
   console.log('I am ready!');
 });
 
@@ -10,14 +13,12 @@ client.on('message', message => {
     message.reply('pong');
   }
 });
-
+*/
 client.login('NDExNTQ1NzExMjA1OTQxMjU5.DV9SAQ.bGfXhcJSQOzNFYQSoGfjh');
 
+console.log("hello");
 
 
-/*var Discord = require('discord.io');
-var logger = require('winston');
-var auth = require('./auth.json');
 
 //valid commands
 var commands = [
@@ -50,10 +51,7 @@ var bot = new Discord.Client({
    autorun: true
 });
 
-
-
 //client secret: F5K-yAzV2C_gjbor-EOi0xFCYaT_PoVa
-
 
 bot.on('ready', function (evt){
     logger.info('Connected');
@@ -78,7 +76,7 @@ bot.on('message', function (user, userID, channelID, message, evt){
 
             // !jeff
             case 'jeff':
-                msg = 'My name\s Jeff!';
+                msg = 'My name\'s Jeff!';
                 sendMessage(channelID, msg);
             break;
             
@@ -98,14 +96,14 @@ bot.on('message', function (user, userID, channelID, message, evt){
          }     
     }
 });
-*/
-/*bot.on("presence", function(user, userID, status, game, event) {
+
+bot.on("presence", function(user, userID, status, game, event) {
     console.log(user + " is now: " + status);
 });
-*/
-//bot.on("any", function(event) {
+
+bot.on("any", function(event) {
     /*console.log(rawEvent)*/ //Logs every event
-//});
+});
 //bot.login("NDExNTQ1NzExMjA1OTQxMjU5.DV9SAQ.bGfXhcJSQOzNFYQSoGfjh")
 
 function printCmds(cmds){

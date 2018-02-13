@@ -123,7 +123,7 @@ bot.on('message', mesg => {
                             .setURL(res["link"]);
 
                         if(err) return console.log(err);
-                        msg = `{embed}`;    
+                        msg = {embed};    
                     });
                 }
                 mesg.reply(msg);

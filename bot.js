@@ -168,7 +168,7 @@ function validateArgs(cmdName, args){
     })
     var result = result[0];
 
-    return args.size == result['usage'].split(' ').size();
+    return args.size == result['usage'].split(' ').length;
 }
 
 function sendMsg(channelID, msg){

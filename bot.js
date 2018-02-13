@@ -23,6 +23,10 @@ var commands = [
     { name: "greg",
       description: "Displays :gregW: emote",
       usage: "!greg"
+    },
+    { name: "yt",
+      description: "Searches for and provides link to youtube video specified",
+      usage: "!yt <title>"
     }
 ];
 
@@ -105,7 +109,7 @@ bot.on('message', mesg => {
                     key: 'AIzaSyCXzsVCNuy1XSf26xynQHJwrQ8V0stEUoM'
                 };
  
-                if (!validateArgs('yt', args)){
+                if (args.size <= 1){
                     msg = INVALID_ARGS_MSG;
                 }
                 else{

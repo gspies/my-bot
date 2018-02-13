@@ -9,6 +9,7 @@
       "resolved": "https://registry.npmjs.org/async/-/async-1.0.0.tgz",
       "version": "1.0.0"
     },
+    "cheerio": "^1.0.0-rc.2",
     "cjopus": {
       "integrity": "sha1-RvPPyWuD99eERt6LTP2ZS1iJqaA=",
       "resolved": "https://registry.npmjs.org/cjopus/-/cjopus-0.0.4.tgz",
@@ -37,12 +38,12 @@
       "version": "0.1.2"
     },
     "jquery": "^3.3.1",
-    
     "options": {
       "integrity": "sha1-7CLTEoBrtT5zF3Pnza788cZDEo8=",
       "resolved": "https://registry.npmjs.org/options/-/options-0.0.6.tgz",
       "version": "0.0.6"
     },
+    "request": "^2.83.0",
     "stack-trace": {
       "integrity": "sha1-VHxws0fo0ytOEI6hoqFZ5f3eGcA=",
       "resolved": "https://registry.npmjs.org/stack-trace/-/stack-trace-0.0.10.tgz",

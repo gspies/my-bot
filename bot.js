@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-//const bot = new Discord.Client();
 var logger = require('winston');
 var auth = require('./auth.json');
 var search = require('youtube-search');
@@ -32,19 +31,19 @@ var commands = [
 
 var RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
 var INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(logger.transports.Console, {
     colorize: true
 });
 logger.level = 'debug';
+
 // Initialize Discord Bot
 var bot = new Discord.Client({
    token: auth.token,
    autorun: true
 })
-
-//client secret: F5K-yAzV2C_gjbor-EOi0xFCYaT_PoVa
 
 bot.on('ready', () => {
     logger.info('Connected');
@@ -52,6 +51,7 @@ bot.on('ready', () => {
     logger.info(bot.username + ' - (' + bot.id + ')');
     
 });
+
 bot.on('message', mesg => {
 
     console.log(mesg.content);
@@ -164,18 +164,11 @@ function printCmds(cmds){
 function validateArgs(cmdName, args){
     //get correct object and verify number of args
     var result = commands.filter(function(cmds){
-        return cmds.name == cmdName;
+        return cmds.name == cmdName;9u
     })
     var result = result[0];
 
     return args.size == result['usage'].split(' ').length;
-}
-
-function sendMsg(channelID, msg){
-    bot.sendMessage({
-        to: channelID,
-        message: msg
-    });
 }
 
 function joinArgs(args){

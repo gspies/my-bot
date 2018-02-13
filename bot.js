@@ -87,8 +87,8 @@ bot.on('message', mesg => {
                 }
                 else {
                     var accountId = args[1];
-                    rl_scraper.getRLData(accountId);
-                    msg = RL_TRACKER_URL + accountId;
+                    var ratings = getRLData(accountId);
+                    msg = ratings;
                 }
                 mesg.reply(msg);
             break;

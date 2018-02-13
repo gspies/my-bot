@@ -1,23 +1,9 @@
 const Discord = require('discord.js');
-const bot = new Discord.Client();
+//const bot = new Discord.Client();
 var logger = require('winston');
 var auth = require('./auth.json');
 
-/*client.on('ready', () => {
- 
-  console.log('I am ready!');
-});
-
-client.on('message', message => {
-  if (message.content === 'ping') {
-    message.reply('pong');
-  }
-});
-*/
-
 console.log("hello");
-
-
 
 //valid commands
 var commands = [
@@ -45,20 +31,24 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 // Initialize Discord Bot
-/*var bot = new Discord.Client({
+var bot = new Discord.Client({
    token: auth.token,
    autorun: true
-});*/
+})
 
 //client secret: F5K-yAzV2C_gjbor-EOi0xFCYaT_PoVa
 
-bot.on('ready', function (evt){
+bot.on('ready', () => {
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
-    console.log("hi");
+    
 });
-bot.on('message', function (user, userID, channelID, message, evt){
+bot.on('message', mesg => {
+
+    console.log(mesg.content);
+    var message = mesg.content;
+     
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
@@ -70,13 +60,14 @@ bot.on('message', function (user, userID, channelID, message, evt){
             
             // !help
             case 'help':
-                sendMessage(channelID, printCmds(commands));
+                mesg.reply(printCmds(commands));
             break;
 
             // !jeff
             case 'jeff':
                 msg = 'My name\'s Jeff!';
-                sendMessage(channelID, msg);
+                mesg.reply(msg);
+                
             break;
             
             // !stats
@@ -88,7 +79,14 @@ bot.on('message', function (user, userID, channelID, message, evt){
                     var accountId = args[1];
                     msg = RL_TRACKER_URL + accountId;
                 }
-                sendMessage(channelID, msg);
+                mesg.reply(msg);
+            break;
+
+             // !stats
+            case 'greg':
+               
+                msg = " :gregW:"
+                mesg.reply(msg);
             break;
             
             // Just add any case commands if you want to..
@@ -104,14 +102,15 @@ bot.on("any", function(event) {
     /*console.log(rawEvent)*/ //Logs every event
 });
 
-bot.login('NDExNTQ1NzExMjA1OTQxMjU5.DV9SAQ.bGfXhcJSQOzNFYQSoGfjh');
+bot.login('NDExNTQ1NzExMjA1OTQxMjU5.DWO9gg.KF4Ldj8Cz2a3OFU6AJa6MB9k2zM');
 
 function printCmds(cmds){
     var msg = "";
-    cmds.forEach(cmd, function(element){
+    
+    cmds.forEach(function(element){
         var keys = Object.keys(element);
-        for(var i = 0; i < keys.length(); i++){
-            msg += keys[i] + ": " + cmd[keys[i]] + "\n";
+        for(var i = 0; i < keys.length; i++){
+            msg += keys[i] + ": " + element[keys[i]] + "\n";
         }
         msg += "\n";
     });

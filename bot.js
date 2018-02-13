@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 //const bot = new Discord.Client();
 var logger = require('winston');
 var auth = require('./auth.json');
+var search = require('youtube-search');
 
 console.log("hello");
 
@@ -85,11 +86,37 @@ bot.on('message', mesg => {
                 mesg.reply(msg);
             break;
 
-             // !stats
+             // !greg
             case 'greg':
-                const gregW = bot.emojis.find("name", "gregW");
-                msg = `${gregW}`;
+                if (!validateArgs('greg', args)){
+                    msg = INVALID_ARGS_MSG;
+                }
+                else{
+                    const gregW = bot.emojis.find("name", "gregW");
+                    msg = `${gregW}`;
+                }
                 mesg.reply(msg);
+            break;
+
+            // !yt
+            case 'yt':
+                var opts = {
+                    maxResults: 1,
+                    key: 'AIzaSyCXzsVCNuy1XSf26xynQHJwrQ8V0stEUoM'
+                };
+ 
+                if (!validateArgs('yt', args)){
+                    msg = INVALID_ARGS_MSG;
+                }
+                else{
+                    var title = joinArgs(args);
+                    search(title, opts, function(err, results) {
+                        if(err) return console.log(err);
+                        msg = results[0]["link"]    
+                    });
+                }
+                mesg.reply(msg);
+
             break;
             
             // Just add any case commands if you want to..
@@ -136,4 +163,9 @@ function sendMsg(channelID, msg){
         to: channelID,
         message: msg
     });
+}
+
+function joinArgs(args){
+    var combinedArgs = args.slice(1, args.length).join(" ");
+    return combinedArgs;
 }

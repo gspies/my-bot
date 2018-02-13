@@ -115,9 +115,15 @@ bot.on('message', mesg => {
                 else{
                     var title = joinArgs(args);
                     search(title, opts, function(err, results) {
-                        console.log(results[0]["link"]);
+                        var res = results[0];
+                        console.log(res["link"]);
+                        const embed = new Discord.RichEmbed()
+                            .setTitle(res["title"])
+                            .setDescription(res["description"])
+                            .setURL(res["link"]);
+
                         if(err) return console.log(err);
-                        msg = results[0]["link"];    
+                        msg = `{embed}`;    
                     });
                 }
                 mesg.reply(msg);

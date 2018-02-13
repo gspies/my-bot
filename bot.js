@@ -167,7 +167,7 @@ function printCmds(cmds){
 function validateArgs(cmdName, args){
     //get correct object and verify number of args
     var result = commands.filter(function(cmds){
-        return cmds.name == cmdName;9u
+        return cmds.name == cmdName;
     })
     var result = result[0];
 

@@ -128,7 +128,7 @@ bot.on('message', mesg => {
                         msg = attachment;    
                     });
                 }
-                mesg.reply(msg);
+                bot.sendFile(title, msg);
 
             break;
             

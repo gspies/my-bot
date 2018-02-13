@@ -10,7 +10,7 @@ search('rocket league', opts, function(err, results) {
  
   console.dir(results);
 });*/
-var $ = require('jquery');
+var $ = jQuery = require('jquery')(window);
 var http = require('http');
 /*require("jsdom").env("", function(err, window) {
     if (err) {

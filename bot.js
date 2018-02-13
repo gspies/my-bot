@@ -18,8 +18,11 @@ var commands = [
     { name: "rlstats",
       description: "Shows statistics from rocketleague.tracker.network when ID is given",
       usage: "!rlstats <Steam ID>"
+    },
+    { name: "greg",
+      description: "Displays :gregW: emote",
+      usage: "!greg"
     }
-
 ];
 
 var RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
@@ -60,7 +63,7 @@ bot.on('message', mesg => {
             
             // !help
             case 'help':
-                mesg.reply(printCmds(commands));
+                mesg.reply("\n" + printCmds(commands));
             break;
 
             // !jeff
@@ -84,9 +87,9 @@ bot.on('message', mesg => {
 
              // !stats
             case 'greg':
-               
-                msg = " :gregW:"
-                mesg.reply(msg);
+                console.log(bot.get_all_emojis());
+                //msg = `${gregW}`;
+                //mesg.reply(msg);
             break;
             
             // Just add any case commands if you want to..

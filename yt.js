@@ -10,17 +10,18 @@ search('rocket league', opts, function(err, results) {
  
   console.dir(results);
 });*/
-var $;
-require("jsdom").env("", function(err, window) {
+var $ = require('jquery');
+var http = require('http');
+/*require("jsdom").env("", function(err, window) {
     if (err) {
         console.error(err);
         return;
     }
  
     var $ = require("jquery")(window);
-});
+});*/
 
 var name = "finessegreg";
-$.get('https://rltracker.pro/profiles/' + name + "/steam", function(response) {
+http.get('http://rltracker.pro/profiles/' + name + "/steam", function(response) {
 	console.log(response);
 })

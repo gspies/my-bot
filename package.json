@@ -37,6 +37,7 @@
       "version": "0.1.2"
     },
     "jquery": "^3.3.1",
+    "jsdom": "^11.6.2",
     "options": {
       "integrity": "sha1-7CLTEoBrtT5zF3Pnza788cZDEo8=",
       "resolved": "https://registry.npmjs.org/options/-/options-0.0.6.tgz",

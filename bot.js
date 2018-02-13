@@ -19,7 +19,7 @@ var commands = [
     },
     { name: "rlstats",
       description: "Shows statistics from rocketleague.tracker.network when ID is given",
-      usage: "!rlstats <Steam ID>"
+      usage: "!rlstats <SteamID>"
     },
     { name: "greg",
       description: "Displays :gregW: emote",

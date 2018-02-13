@@ -87,9 +87,9 @@ bot.on('message', mesg => {
 
              // !stats
             case 'greg':
-                console.log(bot.get_all_emojis());
-                //msg = `${gregW}`;
-                //mesg.reply(msg);
+                const gregW = bot.emojis.find("name", "gregW");
+                msg = `${gregW}`;
+                mesg.reply(msg);
             break;
             
             // Just add any case commands if you want to..

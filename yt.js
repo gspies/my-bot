@@ -33,9 +33,7 @@ request('http://rltracker.pro/profiles/finessegreg/steam', function (error, resp
       	var a = $(this).text();
       	ratings[count] += a;
       }
-      else{
-      	break;
-      }
+      
     });
   }
   console.log(ratings);

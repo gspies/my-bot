@@ -115,9 +115,9 @@ bot.on('message', mesg => {
                 else{
                     var title = joinArgs(args);
                     search(title, opts, function(err, results) {
-                        console.log(results);
+                        console.log(results[0]);
                         if(err) return console.log(err);
-                        msg = results[0]["link"];    
+                        msg = results[0].link;    
                     });
                 }
                 mesg.reply(msg);

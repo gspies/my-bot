@@ -116,16 +116,16 @@ bot.on('message', mesg => {
                     var title = joinArgs(args);
                     search(title, opts, function(err, results) {
                         var res = results[0];
-                        
-                        const embed = new Discord.RichEmbed()
+                        var attachment = new Discord.Attachment(res["link"], title);
+                        /*const embed = new Discord.RichEmbed()
                             .setTitle(res["title"])
                             .setDescription(res["description"])
                             .setURL(res["link"]);
-
-                        console.log({embed});
+                        */
+                        console.log(attachment);
 
                         if(err) return console.log(err);
-                        msg = {embed};    
+                        msg = attachment;    
                     });
                 }
                 mesg.reply(msg);

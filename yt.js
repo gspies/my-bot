@@ -25,9 +25,9 @@ request('http://rltracker.pro/profiles/finessegreg/steam', function (error, resp
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
     console.log(html);
-    $('span.comhead').each(function(i, element){
-      var a = $(this).prev();
-      console.log(a.text());
+    $('div.rating').each(function(i, element){
+      var a = $(this).text();
+      console.log(a);
     });
   }
 });

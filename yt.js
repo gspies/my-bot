@@ -19,7 +19,7 @@ var name = "finessegreg";
 var request = require('request');
 var cheerio = require('cheerio');
 
-request('http://news.ycombinator.com', function (error, response, html) {
+request('http://rltracker.pro/profiles/finessegreg/steam', function (error, response, html) {
   console.log("in request");
   console.log(error);
   if (!error && response.statusCode == 200) {

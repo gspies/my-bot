@@ -116,11 +116,13 @@ bot.on('message', mesg => {
                     var title = joinArgs(args);
                     search(title, opts, function(err, results) {
                         var res = results[0];
-                        console.log(res["link"]);
+                        
                         const embed = new Discord.RichEmbed()
                             .setTitle(res["title"])
                             .setDescription(res["description"])
                             .setURL(res["link"]);
+
+                        console.log({embed});
 
                         if(err) return console.log(err);
                         msg = {embed};    

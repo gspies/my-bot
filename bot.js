@@ -170,8 +170,7 @@ function validateArgs(cmdName, args){
         return cmds.name == cmdName;
     })
     var result = result[0];
-    console.log(args.size)
-    var args.size == result['usage'].split(' ').length;
+
     return args.size == result['usage'].split(' ').length - 1;
 }
 

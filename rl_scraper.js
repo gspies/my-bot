@@ -1,8 +1,10 @@
-function (userID){ 
+var request = require('request');
+var cheerio = require('cheerio');
+var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
 
-	var request = require('request');
-	var cheerio = require('cheerio');
-	var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
+function getRLData(userID){ 
+	console.log(userID);
+
 	request('http://rltracker.pro/profiles/finessegreg/steam', function (error, response, html) {
 	  console.log("in request");
 	  console.log(error);

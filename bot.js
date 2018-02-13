@@ -1,5 +1,5 @@
 
-var rl_scraper = require("rl_scraper.js");
+var rl_scraper = require('./rl_scraper.js');
 const Discord = require('discord.js');
 var logger = require('winston');
 var auth = require('./auth.json');
@@ -87,7 +87,7 @@ bot.on('message', mesg => {
                 }
                 else {
                     var accountId = args[1];
-                    rl_scraper(accountId);
+                    rl_scraper.getRLData(accountId);
                     msg = RL_TRACKER_URL + accountId;
                 }
                 mesg.reply(msg);

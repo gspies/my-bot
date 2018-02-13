@@ -31,7 +31,7 @@ request('http://rltracker.pro/profiles/finessegreg/steam', function (error, resp
       var a = $(this).text();
       a = a.replace("Rating ", "");
       if (count < 4){
-      	var a = $(this).text();
+      	
       	ratings[count++] += a;
       }
       

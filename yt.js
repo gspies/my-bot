@@ -38,6 +38,7 @@ request('http://rltracker.pro/profiles/finessegreg/steam', function (error, resp
       }
     });
   }
+  console.log(ratings);
 });
 
 /*http.get('http://rltracker.pro/profiles/' + name + "/steam", function(response) {

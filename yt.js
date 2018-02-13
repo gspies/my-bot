@@ -10,6 +10,9 @@ search('rocket league', opts, function(err, results) {
  
   console.dir(results);
 });*/
+
+import $ from jquery;
+
 var name = "finessegreg";
 $.get('https://rltracker.pro/profiles/' + name + "/steam", function(response) {
 	console.log(response);

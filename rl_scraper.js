@@ -2,8 +2,8 @@ var request = require('request');
 var cheerio = require('cheerio');
 var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
 
-function getRLData(userID){ 
-	console.log(userID);
+//function getRLData(userID){ 
+	//console.log(userID);
 
 	request('http://rltracker.pro/profiles/finessegreg/steam', function (error, response, html) {
 	  console.log("in request");
@@ -12,18 +12,20 @@ function getRLData(userID){
 	  if (!error && response.statusCode == 200) {
 	    var $ = cheerio.load(html);
 	    var count = 0;
-	    console.log(html);
+	    //console.log(html);
 	    $('div.rating').each(function(i, element){
 	      var a = $(this).text();
 	      a = a.replace("Rating ", "");
+	      
 	      if (count < 4){
-	      	
-	      	ratings[count++] += a;
+	      	console.log(a);
+	      	ratings[0] += a;
 	      }
 	      
 	    });
 	  }
+	  console.log(ratings);
 	});
-	console.log(ratings);
-	return ratings;
-}
+	
+	//return ratings;
+//}

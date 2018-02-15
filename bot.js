@@ -1,9 +1,11 @@
 
-var rl_scraper = require('./rl_scraper.js');
+//var rl_scraper = require('./rl_scraper.js');
 const Discord = require('discord.js');
 var logger = require('winston');
 var auth = require('./auth.json');
 var search = require('youtube-search');
+var request = require('request');
+var cheerio = require('cheerio');
 
 console.log("hello");
 
@@ -63,6 +65,7 @@ bot.on('message', mesg => {
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
         var args = message.substring(1).split(' ');
+        console.log(args);
         var cmd = args[0];
         var msg;
         args = args.splice(1);
@@ -86,11 +89,35 @@ bot.on('message', mesg => {
                     msg = INVALID_ARGS_MSG;
                 }
                 else {
-                    var accountId = args[1];
-                    var ratings = getRLData(accountId);
-                    msg = ratings;
+                    var accountId = args[0];
+
+                    var url = 'http://rltracker.pro/profiles/' + accountId + '/steam'
+                    console.log(url);
+                    var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
+                    request(url, function (error, response, html) {
+      
+      
+                      if (!error && response.statusCode == 200) {
+                        var $ = cheerio.load(html);
+                        var count = 0;
+                        console.log(error);
+                        $('div.rating').each(function(i, element){
+                          var a = $(this).text();
+                          a = a.replace("Rating ", "");
+                          if (count < 4){
+                            
+                            console.log(ratings[count]);
+                            ratings[count++] += a;
+                            console.log(a);
+                          }
+                          
+                        });
+                        mesg.reply(ratings);
+                                    //console.log(ratings);
+                      }//msg = getRLData(accountId);
+                    });
                 }
-                mesg.reply(msg);
+                //mesg.reply(msg);
             break;
 
              // !greg
@@ -170,7 +197,7 @@ function validateArgs(cmdName, args){
         return cmds.name == cmdName;
     })
     var result = result[0];
-    console.log(args.length, result['usage'].split(' ').length);
+    
     return args.length == result['usage'].split(' ').length - 1;
 }
 
@@ -178,3 +205,7 @@ function joinArgs(args){
     var combinedArgs = args.slice(1, args.length).join(" ");
     return combinedArgs;
 }
+
+
+
+

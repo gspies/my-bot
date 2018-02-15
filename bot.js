@@ -30,6 +30,10 @@ var commands = [
     { name: "yt",
       description: "Searches for and provides link to youtube video specified",
       usage: "!yt <title>"
+    },
+    { name: "op.gg",
+      description: "Provides stats from op.gg when given a username",
+      usage: "!op.gg <username>"
     }
 ];
 
@@ -113,11 +117,10 @@ bot.on('message', mesg => {
                           
                         });
                         mesg.reply(ratings);
-                                    //console.log(ratings);
-                      }//msg = getRLData(accountId);
+                                    
+                      }
                     });
                 }
-                //mesg.reply(msg);
             break;
 
              // !greg
@@ -136,7 +139,11 @@ bot.on('message', mesg => {
             case 'yt':
                 var opts = {
                     maxResults: 1,
+
                     key: auth.yt-token
+
+                    key: auth.yt-token;
+
                 };
  
                 if (args.size <= 1){
@@ -155,12 +162,29 @@ bot.on('message', mesg => {
                         console.log(attachment);
 
                         if(err) return console.log(err);
-                        msg = attachment;    
+                        msg = `{attachment}`;    
                     });
                 }
                 mesg.sendFile(title, msg);
 
             break;
+
+            // !yt
+            case 'op.gg':
+ 
+                if (args.size <= 1){
+                    msg = INVALID_ARGS_MSG;
+                }
+                else{
+                    var username = joinArgs(args);
+                    username = replaceSpace(username);
+                    var url = "http://na.op.gg/summoner/userName=" + username;
+                }
+                mesg.reply(url);
+
+            break;
+            
+
             
             // Just add any case commands if you want to..
          }     
@@ -175,7 +199,9 @@ bot.on("any", function(event) {
     /*console.log(rawEvent)*/ //Logs every event
 });
 
-bot.login(auth.token);
+
+bot.login('auth.disc-token');
+
 
 function printCmds(cmds){
     var msg = "";
@@ -204,6 +230,12 @@ function validateArgs(cmdName, args){
 function joinArgs(args){
     var combinedArgs = args.slice(1, args.length).join(" ");
     return combinedArgs;
+}
+
+function replaceSpace(str){
+    var reg = new RegExp(" ", 'g');
+    str = str.replace(reg, "+");
+    return str;
 }
 
 

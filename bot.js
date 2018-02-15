@@ -173,24 +173,14 @@ bot.on('message', mesg => {
                 }
                 else{
                     var username = joinArgs(args);
-                    
                     username = replaceSpace(username);
-                        
-                    
-                    /*search(title, opts, function(err, results) {
-                        var res = results[0];
-                        var attachment = new Discord.Attachment(res["link"], title);
-                    
-                        console.log(attachment);
-
-                        if(err) return console.log(err);
-                        msg = `{attachment}`;    
-                    });*/
+                    var url = "http://na.op.gg/summoner/userName=" + username;
                 }
-                mesg.sendFile(title, msg);
+                mesg.reply(url);
 
             break;
-            //http://na.op.gg/summoner/userName=finesse+greg
+            
+
             
             // Just add any case commands if you want to..
          }     

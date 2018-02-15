@@ -136,7 +136,7 @@ bot.on('message', mesg => {
             case 'yt':
                 var opts = {
                     maxResults: 1,
-                    key: 'AIzaSyCXzsVCNuy1XSf26xynQHJwrQ8V0stEUoM'
+                    key: auth.yt-token
                 };
  
                 if (args.size <= 1){
@@ -175,7 +175,7 @@ bot.on("any", function(event) {
     /*console.log(rawEvent)*/ //Logs every event
 });
 
-bot.login('NDExNTQ1NzExMjA1OTQxMjU5.DWO9gg.KF4Ldj8Cz2a3OFU6AJa6MB9k2zM');
+bot.login(auth.token);
 
 function printCmds(cmds){
     var msg = "";

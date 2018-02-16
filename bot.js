@@ -44,7 +44,9 @@ var commands = [
 var RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
 var RS_URL = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
 const INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
+const NUM_SKILLS = 24;
 var OPGG_URL = "http://na.op.gg/summoner/userName=";
+
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -301,7 +303,7 @@ function rsStats(url){
         //var $ = cheerio.load(html);
         console.log(html);
         var prettyHtml = html.split("\n");
-        for (var i = 0; i < prettyHtml.length; i++){
+        for (var i = 0; i < NUM_SKILLS; i++){
             var stat = prettyHtml[i].split(',');
             
             //console.log("stat",stat);

@@ -41,10 +41,10 @@ var commands = [
     }
 ];
 
-const RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
-const RS_URL = 'services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
+var RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
+var RS_URL = 'services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
 const INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
-const OPGG_URL = "http://na.op.gg/summoner/userName=";
+var OPGG_URL = "http://na.op.gg/summoner/userName=";
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -199,7 +199,7 @@ bot.on('message', mesg => {
                 else{
                     var username = joinArgs(args, "%20");
                     var url = RS_URL + username;
-                    msg = rsStats(username);
+                    msg = rsStats(url);
                 }
                 mesg.reply(msg);
 
@@ -247,7 +247,7 @@ function validateArgs(cmdName, args){
 }
 
 function joinArgs(args, delim){
-    var combinedArgs = args.slice(1, args.length).join(" ");
+    var combinedArgs = args.join(" ");
     var reg = new RegExp(" ", 'g');
     combinedArgs = combinedArgs.replace(reg, delim);
 
@@ -260,7 +260,7 @@ function joinArgs(args, delim){
     return str;
 }*/
 
-function rsStats(username){
+function rsStats(url){
     var details = [ 
         {'Rank': 0},
         {'Level': 0},
@@ -293,7 +293,7 @@ function rsStats(username){
         'Construction: '
     ];
 
-    request(RS_URL + username, function (error, response, html) {
+    request(url, function (error, response, html) {
       console.log("in request");
       console.log(error);
       console.log(response); 

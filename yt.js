@@ -19,11 +19,7 @@ var http = require('http');
 var name = "finessegreg";
 */
 
-/*http.get('http://rltracker.pro/profiles/' + name + "/steam", function(response) {
-	console.log(response);
-})*/
-//var testobj = [3213,123,123];
-var data = "1231,3213,123\n" + "142,13,321\n"+ "1421,135,3231\n"+ "1421,133,3221";
+/*var data = "1231,3213,123\n" + "142,13,321\n"+ "1421,135,3231\n"+ "1421,133,3221";
 
 var details = [ 
         {'Rank': 0},
@@ -54,29 +50,8 @@ var details = [
         'Farming: ' ,
         'Runecraft: ' ,
         'Hunter: ' ,
-        'Construction: ' */
+        'Construction: ' 
     ];
-
-/*request(RS_URL + username, function (error, response, html) {
-      console.log("in request");
-      console.log(error);
-      console.log 
-      if (!error && response.statusCode == 200) {
-        //var $ = cheerio.load(html);
-        console.log(html);
-        var prettyHtml = html.split("\n");
-        for (var i = 0; i < prettyHtml.length; i++){
-            var stat = prettyHtml.split(',');
-            for(var j = 0; j < stat.length; j++){
-                stats[i] =
-            }
-            stats[i]
-        }
-        
-      }
-      console.log(stats);
-    });
-*/
 
 var prettyHtml = data.split("\n");
 
@@ -98,13 +73,16 @@ for (var i = 0; i < prettyHtml.length; i++){
         */
         /*details["Rank"] = stat[0]; 
         details["Level"] = stat[1]; 
-        details["XP"] = stat[2];*/
+        details["XP"] = stat[2];
         stats[i] += stat[2];
     }
     else{	
         stats[i] += stat[stat.length];
-    }
+    }var combinedArgs = args.join(" ");
     console.log(stats[i]);
     
 }
-console.log(stats);
+console.log(stats);*/
+var args = ['scoobr'];
+var combinedArgs = args.join(" ");
+console.log(combinedArgs);

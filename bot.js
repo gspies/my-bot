@@ -140,12 +140,10 @@ bot.on('message', mesg => {
                 var opts = {
                     maxResults: 1,
 
-                    key: auth.yt-token
-
-                    key: auth.yt-token;
+                    key: auth.yttoken
 
                 };
- 
+                var embed;
                 if (args.size <= 1){
                     msg = INVALID_ARGS_MSG;
                 }
@@ -153,19 +151,21 @@ bot.on('message', mesg => {
                     var title = joinArgs(args);
                     search(title, opts, function(err, results) {
                         var res = results[0];
-                        var attachment = new Discord.Attachment(res["link"], title);
-                        /*const embed = new Discord.RichEmbed()
+                        //var attachment = new Discord.Attachment(res["link"], title);
+                        embed = new Discord.RichEmbed()
                             .setTitle(res["title"])
                             .setDescription(res["description"])
+                            .setThumbnail(res["thumbnails"]["default"]["url"])
                             .setURL(res["link"]);
-                        */
-                        console.log(attachment);
+                        console.log(results);
+                        console.log(res["thumbnails"]["default"]["url"]);
+                        mesg.channel.sendEmbed(embed);
 
                         if(err) return console.log(err);
-                        msg = `{attachment}`;    
+                        //msg = attachment.url;    
                     });
                 }
-                mesg.sendFile(title, msg);
+                
 
             break;
 
@@ -200,7 +200,7 @@ bot.on("any", function(event) {
 });
 
 
-bot.login('auth.disc-token');
+bot.login(auth.disctoken);
 
 
 function printCmds(cmds){

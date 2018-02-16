@@ -300,24 +300,13 @@ function rsStats(url){
       console.log(error);
       console.log(response); 
       if (!error && response.statusCode == 200) {
-        //var $ = cheerio.load(html);
+        
         console.log(html);
         var prettyHtml = html.split("\n");
         for (var i = 0; i < NUM_SKILLS; i++){
             var stat = prettyHtml[i].split(',');
             
-            //console.log("stat",stat);
-            //console.log("stats[i]",stats[i]);
-            //console.log("stats[i].value[j]",stats[i].Rank);
-            
             if(stat.length == 3){
-                /*stats[i]["Rank"] = stat[0]; 
-                stats[i]["Level"] = stat[1]; 
-                stats[i]["XP"] = stat[2];
-                */
-                /*details["Rank"] = stat[0]; 
-                details["Level"] = stat[1]; 
-                details["XP"] = stat[2];*/
                 stats[i] += stat[2];
             }
             else{   

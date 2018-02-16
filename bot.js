@@ -325,10 +325,11 @@ function rsStats(username){
             
         }
         console.log(stats);
+        return stats.toString();
       }
       
     });
-    return stats.toString();
+    
 }
 
 

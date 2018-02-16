@@ -303,31 +303,32 @@ function rsStats(username){
         var prettyHtml = data.split("\n");
         for (var i = 0; i < prettyHtml.length; i++){
             var stat = prettyHtml[i].split(',');
+            
             //console.log("stat",stat);
             //console.log("stats[i]",stats[i]);
             //console.log("stats[i].value[j]",stats[i].Rank);
             
             if(stat.length == 3){
-                stats[i].Rank = stat[0]; 
-                stats[i].Level = stat[1]; 
-                stats[i].XP = stat[2];
+                /*stats[i]["Rank"] = stat[0]; 
+                stats[i]["Level"] = stat[1]; 
+                stats[i]["XP"] = stat[2];
+                */
+                /*details["Rank"] = stat[0]; 
+                details["Level"] = stat[1]; 
+                details["XP"] = stat[2];*/
+                stats[i] += stat[2];
             }
-            else{
-                for(var j = 0; j < stat.length; j++){
-                    stats[i].Rank = stat[j]; 
-                    stats[i].Level = stat[j]; 
-                    stats[i].XP = stat[j];
-                }
-
+            else{   
+                stats[i] += stat[stat.length];
             }
-
+            console.log(stats[i]);
             
         }
         
       }
       console.log(stats);
     });
-    return stats;
+    return stats.toString();
 }
 
 

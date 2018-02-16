@@ -83,6 +83,3 @@ for (var i = 0; i < prettyHtml.length; i++){
     
 }
 console.log(stats);*/
-var args = ['scoobr'];
-var combinedArgs = args.join(" ");
-console.log(combinedArgs);

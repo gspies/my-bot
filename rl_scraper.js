@@ -1,4 +1,4 @@
-var request = require('request');
+/*var request = require('request');
 var cheerio = require('cheerio');
 var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
 
@@ -28,4 +28,4 @@ var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
 	});
 	
 	//return ratings;
-//}
+//}*/

@@ -327,7 +327,7 @@ function rsStats(url){
             
         }
         console.log(stats);
-        return stats.toString();
+        return stats;
       }
       
     });

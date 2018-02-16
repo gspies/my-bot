@@ -34,11 +34,17 @@ var commands = [
     { name: "op.gg",
       description: "Provides stats from op.gg when given a username",
       usage: "!op.gg <username>"
+    },
+    { name: "rs",
+      description: "Provides high scores from runescape API",
+      usage: "!rs <username>"
     }
 ];
 
-var RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
-var INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
+const RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
+const RS_URL = 'services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
+const INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
+const OPGG_URL = "http://na.op.gg/summoner/userName=";
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -117,10 +123,11 @@ bot.on('message', mesg => {
                           
                         });
                         mesg.reply(ratings);
-                                    
+                        
                       }
                     });
                 }
+                
             break;
 
              // !greg
@@ -166,25 +173,37 @@ bot.on('message', mesg => {
                     });
                 }
                 
-
             break;
 
-            // !yt
+            // !op.gg
             case 'op.gg':
  
                 if (args.size <= 1){
                     msg = INVALID_ARGS_MSG;
                 }
                 else{
-                    var username = joinArgs(args);
-                    username = replaceSpace(username);
-                    var url = "http://na.op.gg/summoner/userName=" + username;
+                    var username = joinArgs(args, "+");
+                    //username = replaceSpace(username, "+");
+                    var url = OPGG_URL + username;
                 }
                 mesg.reply(url);
 
             break;
             
+            // !rs
+            case 'rs':
+                var stats = -1;
+                if (args.size <= 1){
+                    msg = INVALID_ARGS_MSG;
+                }
+                else{
+                    var username = joinArgs(args, "%20");
+                    var url = RS_URL + username;
+                    stats = rsStats(username);
+                }
+                mesg.reply(stats);
 
+            break;
             
             // Just add any case commands if you want to..
          }     
@@ -227,17 +246,88 @@ function validateArgs(cmdName, args){
     return args.length == result['usage'].split(' ').length - 1;
 }
 
-function joinArgs(args){
+function joinArgs(args, delim){
     var combinedArgs = args.slice(1, args.length).join(" ");
+    var reg = new RegExp(" ", 'g');
+    combinedArgs = combinedArgs.replace(reg, delim);
+
     return combinedArgs;
 }
 
-function replaceSpace(str){
+/*function replaceSpace(str, delim){
     var reg = new RegExp(" ", 'g');
-    str = str.replace(reg, "+");
+    str = str.replace(reg, delim);
     return str;
-}
+}*/
 
+function rsStats(username){
+    var details = [ 
+        {'Rank': 0},
+        {'Level': 0},
+        {'XP': 0}
+    ];
+    var stats = [
+        {'Overall':details},
+        {'Attack':details},
+        {'Defense':details},
+        {'Strength':details},
+        {'Hitpoints':details},
+        {'Ranged':details},        
+        {'Prayer':details},
+        {'Magic':details},
+        {'Cooking':details},
+        {'Woodcutting':details},
+        {'Fletching':details},
+        {'Fishing':details},
+        {'Firemaking':details},
+        {'Crafting':details},
+        {'Smithing':details},
+        {'Mining':details},
+        {'Herblore':details},        
+        {'Agility':details},
+        {'Thieving':details},
+        {'Slayer':details},
+        {'Farming':details},
+        {'Runecraft':details},
+        {'Hunter':details},
+        {'Construction':details}
+    ];
+
+    request(RS_URL + username, function (error, response, html) {
+      console.log("in request");
+      console.log(error);
+      console.log 
+      if (!error && response.statusCode == 200) {
+        //var $ = cheerio.load(html);
+        console.log(html);
+        var prettyHtml = data.split("\n");
+        for (var i = 0; i < prettyHtml.length; i++){
+            var stat = prettyHtml[i].split(',');
+            //console.log("stat",stat);
+            //console.log("stats[i]",stats[i]);
+            //console.log("stats[i].value[j]",stats[i].Rank);
+            
+            if(stat.length == 3){
+                stats[i].Rank = stat[0]; 
+                stats[i].Level = stat[1]; 
+                stats[i].XP = stat[2];
+            }
+            else{
+                for(var j = 0; j < stat.length; j++){
+                    stats[i].Rank = stat[j]; 
+                    stats[i].Level = stat[j]; 
+                    stats[i].XP = stat[j];
+                }
+
+            }
+
+            
+        }
+        
+      }
+      console.log(stats);
+    });
+}
 
 
 

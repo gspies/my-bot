@@ -151,7 +151,7 @@ bot.on('message', mesg => {
 
                 };
                 var embed;
-                if (args.size <= 1){
+                if (args.size < 1){
                     msg = INVALID_ARGS_MSG;
                 }
                 else{
@@ -193,15 +193,15 @@ bot.on('message', mesg => {
             // !rs
             case 'rs':
                 var stats = -1;
-                if (args.size <= 1){
+                if (args.size < 1){
                     msg = INVALID_ARGS_MSG;
                 }
                 else{
                     var username = joinArgs(args, "%20");
                     var url = RS_URL + username;
-                    stats = rsStats(username);
+                    msg = rsStats(username);
                 }
-                mesg.reply(stats);
+                mesg.reply(msg);
 
             break;
             

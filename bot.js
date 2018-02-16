@@ -42,7 +42,7 @@ var commands = [
 ];
 
 const RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
-const RS_URL = 'services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
+const RS_URL = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
 const INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
 const OPGG_URL = "http://na.op.gg/summoner/userName=";
 
@@ -327,6 +327,7 @@ function rsStats(username){
       }
       console.log(stats);
     });
+    return stats;
 }
 
 

@@ -300,7 +300,7 @@ function rsStats(username){
       if (!error && response.statusCode == 200) {
         //var $ = cheerio.load(html);
         console.log(html);
-        var prettyHtml = data.split("\n");
+        var prettyHtml = html.split("\n");
         for (var i = 0; i < prettyHtml.length; i++){
             var stat = prettyHtml[i].split(',');
             
@@ -324,9 +324,9 @@ function rsStats(username){
             console.log(stats[i]);
             
         }
-        
+        console.log(stats);
       }
-      console.log(stats);
+      
     });
     return stats.toString();
 }

@@ -296,7 +296,7 @@ function rsStats(username){
     request(RS_URL + username, function (error, response, html) {
       console.log("in request");
       console.log(error);
-      console.log 
+      console.log(response); 
       if (!error && response.statusCode == 200) {
         //var $ = cheerio.load(html);
         console.log(html);

@@ -157,7 +157,8 @@ bot.on('message', mesg => {
                     msg = INVALID_ARGS_MSG;
                 }
                 else{
-                    var title = joinArgs(args);
+                    var title = joinArgs(args, " ");
+                    
                     search(title, opts, function(err, results) {
                         var res = results[0];
                         //var attachment = new Discord.Attachment(res["link"], title);
@@ -202,8 +203,10 @@ bot.on('message', mesg => {
                     var username = joinArgs(args, "%20");
                     var url = RS_URL + username;
                     msg = rsStats(url);
+                    console.log(msg);
+                    mesg.reply(msg);
                 }
-                mesg.reply(msg);
+                
 
             break;
             
@@ -253,6 +256,7 @@ function joinArgs(args, delim){
     var reg = new RegExp(" ", 'g');
     combinedArgs = combinedArgs.replace(reg, delim);
 
+    console.log("args", combinedArgs);
     return combinedArgs;
 }
 
@@ -263,63 +267,86 @@ function joinArgs(args, delim){
 }*/
 
 function rsStats(url){
-    var details = [ 
+    var details = [/* 
         {'Rank': 0},
         {'Level': 0},
         {'XP': 0}
+    */];
+    
+    var statNames = [
+        'Overall',
+        'Attack',
+        'Defense',
+        'Strength',
+        'Hitpoints',
+        'Ranged',        
+        'Prayer',
+        'Magic',
+        'Cooking',
+        'Woodcutting',
+        'Fletching',
+        'Fishing',
+        'Firemaking',
+        'Crafting',
+        'Smithing',
+        'Mining',
+        'Herblore',        
+        'Agility',
+        'Thieving',
+        'Slayer',
+        'Farming',
+        'Runecraft',
+        'Hunter',
+        'Construction'
     ];
-    var stats = [
-        {'Overall': details},
-        {'Attack': details},
-        {'Defense': details},
-        {'Strength': details},
-        {'Hitpoints': details},
-        {'Ranged': details},        
-        {'Prayer': details},
-        {'Magic': details},
-        {'Cooking': details},
-        {'Woodcutting': details},
-        {'Fletching': details},
-        {'Fishing': details},
-        {'Firemaking': details},
-        {'Crafting': details},
-        {'Smithing': details},
-        {'Mining': details},
-        {'Herblore': details},        
-        {'Agility': details},
-        {'Thieving': details},
-        {'Slayer': details},
-        {'Farming': details},
-        {'Runecraft': details},
-        {'Hunter': details},
-        {'Construction': details}
-    ];
+    var allStats = [];
 
     request(url, function (error, response, html) {
-      console.log("in request");
-      console.log(error);
-      console.log(response); 
-      if (!error && response.statusCode == 200) {
-        
-        console.log(html);
-        var prettyHtml = html.split("\n");
-        for (var i = 0; i < NUM_SKILLS; i++){
-            var stat = prettyHtml[i].split(',');
+        console.log("in request");
+        console.log(error); 
+        if (!error && response.statusCode == 200) {
             
-            if(stat.length == 3){
-                stats[i] += stat[2];
+            var prettyHtml = html.split("\n");
+            //console.log(prettyHtml);
+            for (var i = 0; i < statNames.length; i++){
+                var stat = prettyHtml[i].split(',');
+                var details2 = Object.assign({}, details);
+                if(stat.length == 3){
+                    details2['Rank'] = stat[0];
+                    details2['Level'] = stat[1];
+                    details2['XP'] = stat[2];
+                }
+                allStats[statNames[i]] = details2;
             }
-            else{   
-                stats[i] += stat[stat.length];
-            }
-            console.log(stats[i]);
-            
+            console.log("before return");
+            return printStats(allStats);
         }
-        console.log(stats);
-        return stats;
-      }
-      
+        
+        //console.log(allStats);
+        
+        
+
+       
+
     });
+
+    function printStats(allStats){
+            var msg = "";
+            for (stat in allStats){
+                console.log(stat);
+                msg += stat + "\n"
+                console.log(allStats[stat]);
+                msg += "\tRank: " + allStats[stat]['Rank'];
+                msg += allStats[stat]['Level'];
+                msg += "\tLevel: " + allStats[stat]['Level'];
+                msg += allStats[stat]['XP'];
+                msg += "\tRank: " + allStats[stat]['XP'];
+                msg += "\n";
+                
+            }
+            //console.log(msg);
+            return msg;
+    }
     
 }
 

@@ -6,11 +6,11 @@ var RS_URL = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?pl
 "1231,3213,123\n" + "142,13,321\n"+ "1421,135,3231\n"+ "142451,13673,32321\n" + "1231,3213,123\n" + "142,13,321\n"+ "1421,135,3231\n"+ "142451,13673,32321\n" +
 "1231,3213,123\n" + "142,13,321\n"+ "1421,135,3231\n"+ "142451,13673,32321\n" + "1231,3213,123\n" + "142,13,321\n"+ "1421,135,3231\n"+ "142451,13673,32321";
 */
-/*var details = [/* 
+var details = [/* 
         {'Rank': 0},
         {'Level': 0},
         {'XP': 0}
-    ];*/
+    */];
     /*var stats = [
         {'Overall': {}},
         {'Attack': {}},
@@ -86,23 +86,25 @@ request(RS_URL, function (error, response, html) {
     }
     
     console.log(allStats);
+    console.log(printStats(allStats));
+
+    function printStats(allStats){
+        var msg = "";
+        for (stat in allStats){
+            console.log(stat);
+            msg += stat + "\n"
+            console.log(allStats[stat]);
+            msg += "\tRank: " + allStats[stat]['Rank'];
+            msg += allStats[stat]['Level'];
+            msg += "\tLevel: " + allStats[stat]['Level'];
+            msg += allStats[stat]['XP'];
+            msg += "\tRank: " + allStats[stat]['XP'];
+            msg += "\n";
+            
+        }
+        
+        return msg;
+    }
+
 });
 
-console.log(printStats(allStats));
-
-function printStats(allStats){
-	var msg = "";
-	for (stat in allStats){
-		console.log(stat);
-		msg += stat + "\n"
-		console.log(allStats[stat]);
-		msg += "\tRank: " + allStats[stat]['Rank'];
-		msg += allStats[stat]['Level'];
-		msg += "\tLevel: " + allStats[stat]['Level'];
-		msg += allStats[stat]['XP'];
-		msg += "\tRank: " + allStats[stat]['XP'];
-		msg += "\n";
-		
-	}
-	return msg;
-}

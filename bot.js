@@ -294,7 +294,7 @@ bot.on('message', mesg => {
                             
                             return msg;
                         }
-
+                        mesg.reply("I have slid in your DMs");
                         mesg.author.sendMessage("Stats for: " + username + " \n"+ printStats(allStats));
                     });
 

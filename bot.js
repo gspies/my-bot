@@ -215,37 +215,8 @@ bot.on('message', mesg => {
                     var url = RS_URL + username;
                     
 
-                    var details = [/* 
-                        {'Rank': 0},
-                        {'Level': 0},
-                        {'XP': 0}
-                    */];
-                    /*var stats = [
-                        {'Overall': {}},
-                        {'Attack': {}},
-                        {'Defense': {}},
-                        {'Strength': {}}/*,
-                        {'Hitpoints': details},
-                        {'Ranged': details},        
-                        {'Prayer': details},
-                        {'Magic': details},
-                        {'Cooking': details},
-                        {'Woodcutting': details},
-                        {'Fletching': details},
-                        {'Fishing': details},
-                        {'Firemaking': details},
-                        {'Crafting': details},
-                        {'Smithing': details},
-                        {'Mining': details},
-                        {'Herblore': details},        
-                        {'Agility': details},
-                        {'Thieving': details},
-                        {'Slayer': details},
-                        {'Farming': details},
-                        {'Runecraft': details},
-                        {'Hunter': details},
-                        'Construction': details}*/
-                    //];
+                    var details = [];
+                
                     var statNames = [
                         'Overall',
                         'Attack',
@@ -307,7 +278,7 @@ bot.on('message', mesg => {
                                 //msg += allStats[stat]['Level'];
                                 msg += "\tLevel: " + allStats[stat]['Level'];
                                 //msg += allStats[stat]['XP'];
-                                msg += "\tXP to Next Level: " + allStats[stat]['XP'];
+                                msg += "\tXP: " + allStats[stat]['XP'];
                                 msg += "\n";
                                 
                             }
@@ -315,7 +286,7 @@ bot.on('message', mesg => {
                             return msg;
                         }
 
-                        mesg.reply("\n"+ printStats(allStats));
+                        mesg.reply("Stats for: " + username + " \n"+ printStats(allStats));
                     });
 
                     //msg = rsStats(url);

@@ -215,7 +215,7 @@ bot.on('message', mesg => {
             // !op.gg
             case 'op.gg':
  
-                if (args.size <= 1){
+                /*if (args.size <= 1){
                     msg = INVALID_ARGS_MSG;
                 }
                 else{
@@ -224,7 +224,7 @@ bot.on('message', mesg => {
                     var url = OPGG_URL + username;
                 }
                 mesg.reply(url);
-
+                */
             break;
             
             // !rs
@@ -294,7 +294,7 @@ bot.on('message', mesg => {
                             
                             return msg;
                         }
-                        mesg.reply("I have slid in your DMs");
+                        mesg.reply("I went down in your DMs");
                         mesg.author.sendMessage("Stats for: " + username + " \n"+ printStats(allStats));
                     });
 

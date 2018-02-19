@@ -274,7 +274,7 @@ bot.on('message', mesg => {
                     ];
                     var allStats = [];
 
-                    request(RS_URL, function (error, response, html) {
+                    request(url, function (error, response, html) {
                         console.log("in request");
                         console.log(error); 
                         if (!error && response.statusCode == 200) {

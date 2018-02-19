@@ -9,6 +9,13 @@ var cheerio = require('cheerio');
 
 console.log("hello");
 
+
+var RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
+var RS_URL = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
+const INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
+const NUM_SKILLS = 24;
+var OPGG_URL = "http://na.op.gg/summoner/userName=";
+
 //valid commands
 var commands = [
     { name: "help",
@@ -41,12 +48,6 @@ var commands = [
     }
 ];
 
-var RL_TRACKER_URL = 'https://rocketleague.tracker.network/profile/steam/';
-var RS_URL = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
-const INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
-const NUM_SKILLS = 24;
-var OPGG_URL = "http://na.op.gg/summoner/userName=";
-
 var statNames = [
      'Overall',
      'Attack',
@@ -73,7 +74,13 @@ var statNames = [
      'Hunter',
      'Construction'
 ];
-var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
+
+var ratings = [
+    "Solo: ", 
+    "Doubles: ", 
+    "Solo Standard: ", 
+    "Standard: "
+];
 
 // Configure logger settings
 logger.remove(logger.transports.Console);

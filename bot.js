@@ -304,10 +304,10 @@ bot.on('message', mesg => {
                                 msg += stat + "\n"
                                 console.log(allStats[stat]);
                                 msg += "\tRank: " + allStats[stat]['Rank'];
-                                msg += allStats[stat]['Level'];
+                                //msg += allStats[stat]['Level'];
                                 msg += "\tLevel: " + allStats[stat]['Level'];
-                                msg += allStats[stat]['XP'];
-                                msg += "\tXP: " + allStats[stat]['XP'];
+                                //msg += allStats[stat]['XP'];
+                                msg += "\tXP to Next Level: " + allStats[stat]['XP'];
                                 msg += "\n";
                                 
                             }

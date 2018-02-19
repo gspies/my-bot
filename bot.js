@@ -295,7 +295,7 @@ bot.on('message', mesg => {
                             return msg;
                         }
                         mesg.reply("I went down in your DMs");
-                        mesg.author.sendMessage("Stats for: " + username + " \n"+ printStats(allStats));
+                        mesg.author.sendMessage("Stats for: " + username + " \n"+ printStats(allStats) + "\n");
                     });
 
                     //msg = rsStats(url);

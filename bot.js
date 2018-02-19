@@ -47,6 +47,33 @@ const INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
 const NUM_SKILLS = 24;
 var OPGG_URL = "http://na.op.gg/summoner/userName=";
 
+var statNames = [
+     'Overall',
+     'Attack',
+     'Defense',
+     'Strength',
+     'Hitpoints',
+     'Ranged',        
+     'Prayer',
+     'Magic',
+     'Cooking',
+     'Woodcutting',
+     'Fletching',
+     'Fishing',
+     'Firemaking',
+     'Crafting',
+     'Smithing',
+     'Mining',
+     'Herblore',        
+     'Agility',
+     'Thieving',
+     'Slayer',
+     'Farming',
+     'Runecraft',
+     'Hunter',
+     'Construction'
+];
+var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -105,7 +132,7 @@ bot.on('message', mesg => {
 
                     var url = 'http://rltracker.pro/profiles/' + accountId + '/steam'
                     console.log(url);
-                    var ratings = ["Solo: ", "Doubles: ", "Solo Standard: ", "Standard: "];
+                    
                     request(url, function (error, response, html) {
       
       
@@ -217,32 +244,7 @@ bot.on('message', mesg => {
 
                     var details = [];
                 
-                    var statNames = [
-                        'Overall',
-                        'Attack',
-                        'Defense',
-                        'Strength',
-                        'Hitpoints',
-                        'Ranged',        
-                        'Prayer',
-                        'Magic',
-                        'Cooking',
-                        'Woodcutting',
-                        'Fletching',
-                        'Fishing',
-                        'Firemaking',
-                        'Crafting',
-                        'Smithing',
-                        'Mining',
-                        'Herblore',        
-                        'Agility',
-                        'Thieving',
-                        'Slayer',
-                        'Farming',
-                        'Runecraft',
-                        'Hunter',
-                        'Construction'
-                    ];
+                    
                     var allStats = [];
 
                     request(url, function (error, response, html) {
@@ -286,7 +288,7 @@ bot.on('message', mesg => {
                             return msg;
                         }
 
-                        mesg.reply("Stats for: " + username + " \n"+ printStats(allStats));
+                        mesg.author.sendMessage("Stats for: " + username + " \n"+ printStats(allStats));
                     });
 
                     //msg = rsStats(url);
@@ -352,12 +354,8 @@ function joinArgs(args, delim){
     return str;
 }*/
 
-function rsStats(url){
-    var details = [/* 
-        {'Rank': 0},
-        {'Level': 0},
-        {'XP': 0}
-    */];
+/*function rsStats(url){
+    var details = [];
     
     var statNames = [
         'Overall',
@@ -434,7 +432,7 @@ function rsStats(url){
             return msg;
     }
     
-}
+}*/
 
 
 

@@ -314,10 +314,10 @@ bot.on('message', mesg => {
                             
                             return msg;
                         }
-
-                        mesg.reply(printStats(allStats));
+                        msg = printStats(allStats);
+                        
                     });
-
+                    mesg.reply("\n" + msg);
                     //msg = rsStats(url);
                     //console.log(msg);
                     

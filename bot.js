@@ -307,7 +307,7 @@ bot.on('message', mesg => {
                                 msg += allStats[stat]['Level'];
                                 msg += "\tLevel: " + allStats[stat]['Level'];
                                 msg += allStats[stat]['XP'];
-                                msg += "\tRank: " + allStats[stat]['XP'];
+                                msg += "\tXP: " + allStats[stat]['XP'];
                                 msg += "\n";
                                 
                             }

@@ -48,39 +48,9 @@ var commands = [
     }
 ];
 
-var statNames = [
-     'Overall',
-     'Attack',
-     'Defense',
-     'Strength',
-     'Hitpoints',
-     'Ranged',        
-     'Prayer',
-     'Magic',
-     'Cooking',
-     'Woodcutting',
-     'Fletching',
-     'Fishing',
-     'Firemaking',
-     'Crafting',
-     'Smithing',
-     'Mining',
-     'Herblore',        
-     'Agility',
-     'Thieving',
-     'Slayer',
-     'Farming',
-     'Runecraft',
-     'Hunter',
-     'Construction'
-];
 
-var ratings = [
-    "Solo: ", 
-    "Doubles: ", 
-    "Solo Standard: ", 
-    "Standard: "
-];
+
+
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -131,6 +101,12 @@ bot.on('message', mesg => {
             
             // !stats
             case 'rlstats':
+                var ratings = [
+                    "Solo: ", 
+                    "Doubles: ", 
+                    "Solo Standard: ", 
+                    "Standard: "
+                ];
                 if (!validateArgs('rlstats', args)){
                     msg = INVALID_ARGS_MSG;
                 }
@@ -241,6 +217,33 @@ bot.on('message', mesg => {
                     mesg.reply(msg);
                 }*/
                 var stats = -1;
+
+                var statNames = [
+                     'Overall',
+                     'Attack',
+                     'Defense',
+                     'Strength',
+                     'Hitpoints',
+                     'Ranged',        
+                     'Prayer',
+                     'Magic',
+                     'Cooking',
+                     'Woodcutting',
+                     'Fletching',
+                     'Fishing',
+                     'Firemaking',
+                     'Crafting',
+                     'Smithing',
+                     'Mining',
+                     'Herblore',        
+                     'Agility',
+                     'Thieving',
+                     'Slayer',
+                     'Farming',
+                     'Runecraft',
+                     'Hunter',
+                     'Construction'
+                ];
                 if (args.size < 1){
                     msg = INVALID_ARGS_MSG;
                 }
@@ -304,6 +307,8 @@ bot.on('message', mesg => {
             break;
             
             // Just add any case commands if you want to..
+            //TODO: RL comparison method
+
          }     
     }
 });

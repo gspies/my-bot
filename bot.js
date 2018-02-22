@@ -126,7 +126,7 @@ bot.on('message', mesg => {
                         $('div.rating').each(function(i, element){
                           var a = $(this).text();
                           a = a.replace("Rating ", "");
-                          if (count < 4){
+                          if (count < ratings.length){
                             
                             console.log(ratings[count]);
                             ratings[count++] += a;
@@ -134,7 +134,7 @@ bot.on('message', mesg => {
                           }
                           
                         });
-                        mesg.reply(ratings);
+                        mesg.reply("Stats for: " + accountID + "\n" + ratings);
                         
                       }
                     });
@@ -253,7 +253,6 @@ bot.on('message', mesg => {
                     
 
                     var details = [];
-                
                     
                     var allStats = [];
 
@@ -306,10 +305,26 @@ bot.on('message', mesg => {
 
             break;
             
+            // !rlcmp
+            case 'rlcmp':
+ 
+                if (args.size != 1){
+                    msg = INVALID_ARGS_MSG;
+                }
+                else{
+                    var username = joinArgs(args, "+");
+                    //username = replaceSpace(username, "+");
+                    var url = OPGG_URL + username;
+                }
+                mesg.reply(url);
+                
+            break;
+            
             // Just add any case commands if you want to..
             //TODO: RL comparison method
+               
+         }
 
-         }     
     }
 });
 

@@ -355,14 +355,14 @@ bot.on('message', mesg => {
                               //console.log("element: ", $(element).attr('a'));
                               var a = $(this).attr("href");
                               console.log(a);
-                              //var lastIndex = a.lastIndexOf("/");
-                              //a = a.substr(lastIndex + 1, a.length);
+                              var lastIndex = a.lastIndexOf("/");
+                              a = a.substr(lastIndex + 1, a.length);
                               //a = a.replace("&#39;", "'");
                               //a = a.replace("Rating ", "");
                               if (count < 6){
                                 
                                 //console.log(a);
-                                //build.add(a);
+                                build.add(a);
                                 count++;
                                 //ratings[count++] += a;
                                 
@@ -373,7 +373,7 @@ bot.on('message', mesg => {
                         }
                         //mesg.reply(build);
                         msg = build;
-                        console.log(build);
+                        //console.log(build);
                     });
                     
                 }

@@ -338,7 +338,8 @@ bot.on('message', mesg => {
                 }
                 else{
                     var build = [];
-                    url = BUILD_URL += args[0];
+                    url = BUILD_URL + args[0];
+                    console.log(url);
                     request(url, function (error, response, html) {
                         console.log("in request");
                         console.log(error); 

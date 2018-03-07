@@ -15,6 +15,7 @@ var RS_URL = 'http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?pl
 const INVALID_ARGS_MSG = 'Invalid arguments. Type !help for more info';
 const NUM_SKILLS = 24;
 var OPGG_URL = "http://na.op.gg/summoner/userName=";
+var BUILD_URL = "http://champion.gg/champion/";
 
 //valid commands
 var commands = [
@@ -45,6 +46,14 @@ var commands = [
     { name: "rs",
       description: "Provides high scores from runescape API",
       usage: "!rs <username>"
+    },
+    { name: "rlcmp",
+      description: "Compares two rocket league accounts based on ranked stats",
+      usage: "!rlcmp <SteamID> <SteamID>"
+    },
+    { name: "build",
+      description: "Displays the most common build path for a given champion",
+      usage: "!build <champion>"
     }
 ];
 
@@ -312,11 +321,52 @@ bot.on('message', mesg => {
                     msg = INVALID_ARGS_MSG;
                 }
                 else{
-                    var username = joinArgs(args, "+");
+                    //var username = joinArgs(args, "+");
                     //username = replaceSpace(username, "+");
-                    var url = OPGG_URL + username;
+                    //var url = OPGG_URL + username;
                 }
                 mesg.reply(url);
+                
+            break;
+
+            // !rlcmp
+            case 'build':
+ 
+                if (args.size != 1){
+                    msg = INVALID_ARGS_MSG;
+                }
+                else{
+                    var build = [];
+                    url = BUILD_URL += args[0];
+                    request(url, function (error, response, html) {
+                        console.log("in request");
+                        console.log(error); 
+                        if (!error && response.statusCode == 200) {
+                            
+                            var $ = cheerio.load(html);
+                            var count = 0;
+                            console.log(error);
+                            $('div.build-wrapper').each(function(i, element){
+                              var a = $(this).attr("href");
+                              var lastIndex = link.lastIndexOf("/");
+                              a = a.substr(lastIndex + 1, link.length);
+                              a = a.replace("&#39;", "'");
+                              //a = a.replace("Rating ", "");
+                              if (count < 6){
+                                
+                                console.log(a);
+                                build.add(a);
+                                //ratings[count++] += a;
+                                //console.log(a);
+                              }
+                              
+                            });
+                            
+                        }
+                        
+                        //console.log(allStats);
+                }
+                mesg.reply(build);
                 
             break;
             

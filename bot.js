@@ -366,7 +366,7 @@ bot.on('message', mesg => {
                         }
                         
                         //console.log(allStats);
-                    }
+                    })
                     mesg.reply(build);
                 }
             break;

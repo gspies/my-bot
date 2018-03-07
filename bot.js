@@ -349,8 +349,8 @@ bot.on('message', mesg => {
                             var $ = cheerio.load(html);
                             var count = 0;
                             console.log(error);
-                            console.log(html);
-                            $('div.build-wrapper').each(function(i, element){
+                            //console.log(html);
+                            $('div.build-wrapper').find('a').each(function(i, element){
                               //console.log("i:", i);
                               //console.log("element: ", $(element).attr('a'));
                               var a = $(this).attr("a");

@@ -357,17 +357,18 @@ bot.on('message', mesg => {
                                 
                                 console.log(a);
                                 build.add(a);
+                                count++;
                                 //ratings[count++] += a;
-                                //console.log(a);
+                                
                               }
                               
                             });
                             
                         }
-                        
-                        //console.log(allStats);
+                        mesg.reply(build);
+                        console.log(build);
                     })
-                    mesg.reply(build);
+                    
                 }
             break;
             

@@ -366,9 +366,9 @@ bot.on('message', mesg => {
                         }
                         
                         //console.log(allStats);
+                    }
+                    mesg.reply(build);
                 }
-                mesg.reply(build);
-                
             break;
             
             // !op.gg

@@ -303,8 +303,9 @@ bot.on('message', mesg => {
                             
                             return msg;
                         }
+
                         mesg.reply("I went down in your DMs");
-                        mesg.author.sendMessage("Stats for: " + username + " \n"+ printStats(allStats) + "\n");
+                        mesg.author.sendMessage("Stats for: " + joinArgs(args, " ") + " \n"+ printStats(allStats) + "\n");
                     });
 
                     //msg = rsStats(url);
@@ -370,6 +371,15 @@ bot.on('message', mesg => {
                 
             break;
             
+            // !op.gg
+            case 'thicc':
+ 
+               
+                mesg.reply("乇乂ㄒ尺卂 ㄒ卄丨匚 匚");
+                
+            break;
+
+
             // Just add any case commands if you want to..
             //TODO: RL comparison method
                

@@ -368,11 +368,14 @@ bot.on('message', mesg => {
                             });
                             
                         }
-                        mesg.reply(build);
+                        //mesg.reply(build);
+                        msg = build;
                         console.log(build);
                     });
                     
                 }
+                mesg.reply(msg);
+                console.log(build);
             break;
             
             // !op.gg

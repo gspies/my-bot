@@ -352,9 +352,9 @@ bot.on('message', mesg => {
                             console.log(html);
                             $('div.build-wrapper').each(function(i, element){
                               //console.log("i:", i);
-                              console.log("element: ", $(element).attr('a'));
-                              //var a = $(this).attr("href");
-                              //console.log(a);
+                              //console.log("element: ", $(element).attr('a'));
+                              var a = $(this).attr("a");
+                              console.log(a);
                               //var lastIndex = a.lastIndexOf("/");
                               //a = a.substr(lastIndex + 1, a.length);
                               //a = a.replace("&#39;", "'");

@@ -349,20 +349,20 @@ bot.on('message', mesg => {
                             var $ = cheerio.load(html);
                             var count = 0;
                             console.log(error);
-                            console.log(html);
+                            //console.log(html);
                             $('div.build-wrapper').each(function(i, element){
-                              console.log("i:", i);
-                              console.log($(element).attr('href'));
-                              var a = $(this).attr("href");
-                              console.log(a);
-                              var lastIndex = a.lastIndexOf("/");
-                              a = a.substr(lastIndex + 1, a.length);
-                              a = a.replace("&#39;", "'");
+                              //console.log("i:", i);
+                              console.log("element":, $(element).attr('href'));
+                              //var a = $(this).attr("href");
+                              //console.log(a);
+                              //var lastIndex = a.lastIndexOf("/");
+                              //a = a.substr(lastIndex + 1, a.length);
+                              //a = a.replace("&#39;", "'");
                               //a = a.replace("Rating ", "");
                               if (count < 6){
                                 
-                                console.log(a);
-                                build.add(a);
+                                //console.log(a);
+                                //build.add(a);
                                 count++;
                                 //ratings[count++] += a;
                                 

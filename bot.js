@@ -350,8 +350,9 @@ bot.on('message', mesg => {
                             var count = 0;
                             console.log(error);
                             $('div.build-wrapper').each(function(i, element){
-                              console.log(element);
+                              
                               var a = $(this).attr("href");
+                              console.log(a);
                               var lastIndex = a.lastIndexOf("/");
                               a = a.substr(lastIndex + 1, a.length);
                               a = a.replace("&#39;", "'");

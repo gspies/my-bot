@@ -333,7 +333,7 @@ bot.on('message', mesg => {
             // !build
             case 'build':
                 console.log(args);
-                if (args.size != 1){
+                if (args.size < 1){
                     msg = INVALID_ARGS_MSG;
                 }
                 else{

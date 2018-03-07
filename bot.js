@@ -352,7 +352,7 @@ bot.on('message', mesg => {
                             //console.log(html);
                             $('div.build-wrapper').each(function(i, element){
                               //console.log("i:", i);
-                              console.log("element":, $(element).attr('href'));
+                              console.log("element: ", $(element).attr('href'));
                               //var a = $(this).attr("href");
                               //console.log(a);
                               //var lastIndex = a.lastIndexOf("/");

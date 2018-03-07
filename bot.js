@@ -352,8 +352,8 @@ bot.on('message', mesg => {
                             $('div.build-wrapper').each(function(i, element){
                               console.log(element);
                               var a = $(this).attr("href");
-                              var lastIndex = link.lastIndexOf("/");
-                              a = a.substr(lastIndex + 1, link.length);
+                              var lastIndex = a.lastIndexOf("/");
+                              a = a.substr(lastIndex + 1, a.length);
                               a = a.replace("&#39;", "'");
                               //a = a.replace("Rating ", "");
                               if (count < 6){

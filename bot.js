@@ -362,7 +362,7 @@ bot.on('message', mesg => {
                               if (count < 6){
                                 
                                 //console.log(a);
-                                build.add(a);
+                                build.push(a);
                                 count++;
                                 //ratings[count++] += a;
                                 

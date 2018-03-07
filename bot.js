@@ -350,6 +350,7 @@ bot.on('message', mesg => {
                             var count = 0;
                             console.log(error);
                             $('div.build-wrapper').each(function(i, element){
+                              console.log(element);
                               var a = $(this).attr("href");
                               var lastIndex = link.lastIndexOf("/");
                               a = a.substr(lastIndex + 1, link.length);
@@ -369,7 +370,7 @@ bot.on('message', mesg => {
                         }
                         mesg.reply(build);
                         console.log(build);
-                    })
+                    });
                     
                 }
             break;

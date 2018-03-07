@@ -354,7 +354,7 @@ bot.on('message', mesg => {
                               //console.log("i:", i);
                               //console.log("element: ", $(element).attr('a'));
                               var a = $(this).attr("href");
-                              console.log(a);
+                              //console.log(a);
                               var lastIndex = a.lastIndexOf("/");
                               a = a.substr(lastIndex + 1, a.length);
                               //a = a.replace("&#39;", "'");
@@ -371,14 +371,14 @@ bot.on('message', mesg => {
                             });
                             
                         }
-                        //mesg.reply(build);
+                        mesg.reply(build);
                         msg = build;
                         //console.log(build);
                     });
                     
                 }
-                mesg.reply(msg);
-                console.log(build);
+                //mesg.reply(msg);
+                //console.log(build);
             break;
             
             // !op.gg

@@ -349,8 +349,9 @@ bot.on('message', mesg => {
                             var $ = cheerio.load(html);
                             var count = 0;
                             console.log(error);
+                            console.log(html);
                             $('div.build-wrapper').each(function(i, element){
-                              
+                              console.log("i:", i);
                               var a = $(this).attr("href");
                               console.log(a);
                               var lastIndex = a.lastIndexOf("/");

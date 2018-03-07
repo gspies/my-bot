@@ -330,13 +330,14 @@ bot.on('message', mesg => {
                 
             break;
 
-            // !rlcmp
+            // !build
             case 'build':
                 console.log(args);
                 if (args.size != 1){
                     msg = INVALID_ARGS_MSG;
                 }
                 else{
+                    console.log("else");
                     var build = [];
                     url = BUILD_URL + args[0];
                     console.log(url);
